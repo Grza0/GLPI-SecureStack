@@ -1,0 +1,19 @@
+services:
+
+  glpi:
+    image: glpi/glpi:latest
+    container_name: glpi
+    restart: always
+    environment:
+      - VIRTUAL_HOST=glpi.local
+      - VIRTUAL_PORT=80
+      - TIMEZONE=Europe/Paris
+    volumes:
+      - "./storage/glpi:/var/glpi:rw"
+      
+    networks:
+      - network-1
+
+networks:
+  network-1:
+    external: true
